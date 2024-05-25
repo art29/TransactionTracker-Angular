@@ -32,6 +32,7 @@ export class TransactionsDialogComponent {
   quickCreate: QuickCreate | null = null;
   categories$ = this.categoriesService.fetchCategories$();
   finalPriceError = false;
+  isSubmitting = false;
 
   constructor(
     private fb: FormBuilder,
@@ -114,6 +115,7 @@ export class TransactionsDialogComponent {
 
   async saveTransaction() {
     this.isFormSubmitted = true;
+    this.isSubmitting = true;
     await this.updateFinalPrice();
     if (this.form.valid) {
       if (this.edit) {
@@ -131,6 +133,7 @@ export class TransactionsDialogComponent {
               'An error occurred while updating the transaction'
             );
           }
+          this.isSubmitting = false;
         });
       } else {
         await lastValueFrom(
@@ -144,6 +147,7 @@ export class TransactionsDialogComponent {
               'An error occurred while creating a transaction'
             );
           }
+          this.isSubmitting = false;
         });
       }
     }

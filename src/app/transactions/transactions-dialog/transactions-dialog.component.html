@@ -177,6 +177,8 @@
       >
     </div>
 
-    <button type="submit" class="btn-primary w-full">Save</button>
+    <button type="submit" [disabled]="isSubmitting" class="btn-primary w-full">
+      Save
+    </button>
   </form>
 </mat-dialog-content>
