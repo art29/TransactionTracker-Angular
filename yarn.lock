@@ -2555,15 +2555,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/angular-fontawesome@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "@fortawesome/angular-fontawesome@npm:0.12.0"
+"@fortawesome/angular-fontawesome@npm:~0.14.1":
+  version: 0.14.1
+  resolution: "@fortawesome/angular-fontawesome@npm:0.14.1"
   dependencies:
-    tslib: ^2.4.1
+    tslib: ^2.6.2
   peerDependencies:
-    "@angular/core": ^15.0.0
+    "@angular/core": ^17.0.0
     "@fortawesome/fontawesome-svg-core": ~1.2.27 || ~1.3.0-beta2 || ^6.1.0
-  checksum: 938e7d2fae4dd3ddfa254d09c7461cadb21abf8dd7ab50e1da91daed08634f15f06ad61dc0db8aac7dc03381c99c7e357fc57760a5784e33f6e396fe210860e3
+  checksum: 5d5d5c06e1092fa5caf64b83c3ec802e9e6b699825f5f351fe2098e2f6404d7f2349553c45679f673c574d96ed0fe2f27b4e85eb7d3585a30423c7ef0984bdce
   languageName: node
   linkType: hard
 
@@ -3528,16 +3528,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ng-select/ng-select@npm:^10.0.4":
-  version: 10.0.4
-  resolution: "@ng-select/ng-select@npm:10.0.4"
+"@ng-select/ng-select@npm:~12.0.7":
+  version: 12.0.7
+  resolution: "@ng-select/ng-select@npm:12.0.7"
   dependencies:
     tslib: ^2.3.1
   peerDependencies:
-    "@angular/common": <16.0.0
-    "@angular/core": <16.0.0
-    "@angular/forms": <16.0.0
-  checksum: 6fa5e7176b6cbe66719b29ac9608bd8c7ce8b2114d48ffe719f00d63a53a0a053917f8fd69e334e038f750a723a58f99937321fe8ec163349ef87e2e5d4f5512
+    "@angular/common": ^17.0.0-rc.0
+    "@angular/core": ^17.0.0-rc.0
+    "@angular/forms": ^17.0.0-rc.0
+  checksum: c8e26a8e2b9bf20ba936507b12b1826481e8fc27ab5b84c9cf17b5772afceadfd55bf22383ee7ed87f961f3f8a8464ea2f04ce0221f935cba860cbd4d46d79ea
   languageName: node
   linkType: hard
 
@@ -10687,10 +10687,10 @@ __metadata:
     "@angular/platform-browser-dynamic": ^16.2.12
     "@angular/router": ^16.2.12
     "@angular/service-worker": ^16.2.12
-    "@fortawesome/angular-fontawesome": ^0.12.0
+    "@fortawesome/angular-fontawesome": ~0.14.1
     "@fortawesome/fontawesome-svg-core": ^6.2.1
     "@fortawesome/free-solid-svg-icons": ^6.2.1
-    "@ng-select/ng-select": ^10.0.4
+    "@ng-select/ng-select": ~12.0.7
     "@types/jasmine": ~4.3.0
     autoprefixer: ^10.4.13
     chart.js: ^3.6.0
@@ -10731,14 +10731,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.3.1":
+"tslib@npm:^2.0.3, tslib@npm:^2.3.1, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.1":
+"tslib@npm:^2.1.0, tslib@npm:^2.3.0":
   version: 2.4.1
   resolution: "tslib@npm:2.4.1"
   checksum: 19480d6e0313292bd6505d4efe096a6b31c70e21cf08b5febf4da62e95c265c8f571f7b36fcc3d1a17e068032f59c269fab3459d6cd3ed6949eafecf64315fca
