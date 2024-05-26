@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyConverterService } from '../../components/shared/currency-converter.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [TransactionsDialogComponent],
@@ -16,6 +17,7 @@ import { CurrencyConverterService } from '../../components/shared/currency-conve
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    NgSelectModule,
   ],
   exports: [TransactionsDialogComponent],
   providers: [TransactionService, CategoriesService, CurrencyConverterService],

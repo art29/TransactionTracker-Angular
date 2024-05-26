@@ -7,10 +7,21 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { lastValueFrom } from 'rxjs';
+import {
+  concat,
+  debounceTime,
+  distinctUntilChanged,
+  lastValueFrom,
+  Observable,
+  of,
+  Subject,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   Currencies,
   QuickCreate,
+  SearchResult,
   Transaction,
   TransactionService,
 } from '../transactions.service';
@@ -18,6 +29,7 @@ import { CategoriesService } from '../../categories/categories.service';
 import { formatDate } from '@angular/common';
 import { CurrencyConverterService } from '../../components/shared/currency-converter.service';
 import { AuthService } from '../../components/shared/auth.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-transactions-dialog',
@@ -33,6 +45,9 @@ export class TransactionsDialogComponent {
   categories$ = this.categoriesService.fetchCategories$();
   finalPriceError = false;
   isSubmitting = false;
+  typeaheadOptions$: Observable<SearchResult[]>;
+  typeaheadInput$ = new Subject<string>();
+  typeaheadLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -99,6 +114,21 @@ export class TransactionsDialogComponent {
       ),
     });
 
+    this.typeaheadOptions$ = concat(
+      of([]),
+      this.typeaheadInput$.pipe(
+        distinctUntilChanged(),
+        debounceTime(200),
+        tap(() => (this.typeaheadLoading = true)),
+        switchMap((term) =>
+          this.transactionsService.searchTransactions$(term).pipe(
+            catchError(() => of([])), // empty list on error
+            tap(() => (this.typeaheadLoading = false))
+          )
+        )
+      )
+    );
+
     if (
       this.quickCreate?.original_price &&
       this.quickCreate?.original_currency
@@ -151,6 +181,10 @@ export class TransactionsDialogComponent {
         });
       }
     }
+  }
+
+  addCategory(result?: SearchResult) {
+    this.form.controls['category_id'].setValue(result?.category_id ?? null);
   }
 
   setDateToday() {

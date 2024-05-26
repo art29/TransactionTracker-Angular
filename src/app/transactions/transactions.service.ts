@@ -67,6 +67,11 @@ export interface ChartsDatasets {
   data: number[];
 }
 
+export interface SearchResult {
+  name: string;
+  category_id: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -116,6 +121,12 @@ export class TransactionService {
           },
         });
       })
+    );
+  }
+
+  searchTransactions$(searchTerm: string): Observable<SearchResult[]> {
+    return this.http.get<SearchResult[]>(
+      `${API_URL}/search?query=${searchTerm}`
     );
   }
 

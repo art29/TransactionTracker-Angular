@@ -8,36 +8,25 @@
       <label class="font-normal text-md text-gray-800"
         >Name of the Transaction</label
       >
-      <input
-        type="text"
+      <ng-select
         formControlName="name"
-        class="form-input"
-        placeholder="Transaction Name"
         required
-      />
+        placeholder="Transaction Name"
+        bindLabel="name"
+        bindValue="name"
+        [addTag]="true"
+        [loading]="typeaheadLoading"
+        [editableSearchTerm]="true"
+        [typeahead]="typeaheadInput$"
+        [items]="typeaheadOptions$ | async"
+        [minTermLength]="2"
+        (change)="addCategory($event)"
+      ></ng-select>
       <div
         class="invalid-input"
         *ngIf="isFormSubmitted && form.controls['name'].errors"
       >
         The name cannot be empty.
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <label class="font-normal text-md text-gray-800">Transaction Date</label>
-      <div class="flex">
-        <button
-          type="button"
-          (click)="setDateToday()"
-          class="btn-primary-group-left"
-        >
-          Today
-        </button>
-        <input
-          formControlName="date"
-          type="date"
-          class="border w-full px-2 py-1 rounded-r-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-800"
-        />
       </div>
     </div>
 
@@ -68,6 +57,24 @@
         *ngIf="isFormSubmitted && form.controls['category_id'].errors"
       >
         The Category cannot be empty.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="font-normal text-md text-gray-800">Transaction Date</label>
+      <div class="flex">
+        <button
+          type="button"
+          (click)="setDateToday()"
+          class="btn-primary-group-left"
+        >
+          Today
+        </button>
+        <input
+          formControlName="date"
+          type="date"
+          class="border w-full px-2 py-1 rounded-r-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-800"
+        />
       </div>
     </div>
 
