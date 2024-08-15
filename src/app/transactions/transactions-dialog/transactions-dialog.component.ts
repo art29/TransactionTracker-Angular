@@ -118,7 +118,7 @@ export class TransactionsDialogComponent {
       of([]),
       this.typeaheadInput$.pipe(
         distinctUntilChanged(),
-        debounceTime(200),
+        debounceTime(150),
         tap(() => (this.typeaheadLoading = true)),
         switchMap((term) =>
           this.transactionsService.searchTransactions$(term).pipe(
@@ -184,7 +184,9 @@ export class TransactionsDialogComponent {
   }
 
   addCategory(result?: SearchResult) {
-    this.form.controls['category_id'].setValue(result?.category_id ?? null);
+    if (result?.category_id) {
+      this.form.controls['category_id'].setValue(result.category_id);
+    }
   }
 
   setDateToday() {
